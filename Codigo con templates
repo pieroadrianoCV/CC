@@ -1,0 +1,85 @@
+#include <iostream>
+using namespace std;
+
+template<typename T>
+class IntegerArray {
+private:
+    T *data;
+    int size;
+
+public:
+    IntegerArray(int size) {
+        data = new T[size];
+        this->size = size;
+    }
+
+    // Constructor de copia
+    IntegerArray(const IntegerArray& other) {
+        size = other.size;
+        data = new T[size];
+        for (int i = 0; i < size; i++) {
+            data[i] = other.data[i];
+        }
+    }
+
+    ~IntegerArray() {
+        delete[] data;
+    }
+
+    //  modificar un elemento del arreglo
+    void set(int index, T value) {
+        if (index >= 0 && index < size) {
+            data[index] = value;
+        }
+    }
+
+    //  obtener un elemento del arreglo
+    T get(int index) const {
+        if (index >= 0 && index < size) {
+            return data[index];
+        }
+        return T(); 
+    }
+
+     void print() const {
+        for (int i = 0; i < size; i++) {
+            cout << data[i] << " ";
+        }
+        cout << endl;
+    }
+
+};
+
+int main() {
+    IntegerArray<int> a(2);
+    a.set(0, 4);
+    a.set(1, 2);
+
+    IntegerArray<int> b = a;
+
+    cout << a.get(0) << endl; // muestra 4
+    cout << a.get(1) << endl; // muestra 2
+
+    IntegerArray<double> c(3);
+    c.set(0, 1.29);
+    c.set(1, 4.23);
+    c.set(2, 7.67);
+
+    cout << c.get(0) << endl; 
+    cout << c.get(1) << endl;
+    cout << c.get(2) << endl; 
+
+    IntegerArray<char> d(5);
+    d.set(0, 'P');
+    d.set(1, 'i');
+    d.set(2, 'e');
+    d.set(3, 'r');
+    d.set(4, 'o');
+
+    for (int i = 0; i < 5; i++) {
+        cout << d.get(i);
+    }
+    cout << endl; 
+
+    return 0;
+}

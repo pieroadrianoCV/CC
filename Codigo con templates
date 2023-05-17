@@ -1,6 +1,18 @@
 #include <iostream>
 using namespace std;
 
+class NewClass {
+private:
+    int value;
+
+public:
+    NewClass(int value) : value(value) {}
+
+    int getValue() const {
+        return value;
+    }
+};
+
 template<typename T>
 class IntegerArray {
 private:
@@ -41,45 +53,20 @@ public:
         return T(); 
     }
 
-     void print() const {
+    void print() const {
         for (int i = 0; i < size; i++) {
-            cout << data[i] << " ";
+            cout << data[i].getValue() << " ";
         }
         cout << endl;
     }
-
 };
 
 int main() {
-    IntegerArray<int> a(2);
-    a.set(0, 4);
-    a.set(1, 2);
+    IntegerArray<NewClass> a(3);
+    a.set(0, NewClass(4));
+    a.set(1, NewClass(2));
+    a.set(2, NewClass(6));
 
-    IntegerArray<int> b = a;
-
-    cout << a.get(0) << endl; // muestra 4
-    cout << a.get(1) << endl; // muestra 2
-
-    IntegerArray<double> c(3);
-    c.set(0, 1.29);
-    c.set(1, 4.23);
-    c.set(2, 7.67);
-
-    cout << c.get(0) << endl; 
-    cout << c.get(1) << endl;
-    cout << c.get(2) << endl; 
-
-    IntegerArray<char> d(5);
-    d.set(0, 'P');
-    d.set(1, 'i');
-    d.set(2, 'e');
-    d.set(3, 'r');
-    d.set(4, 'o');
-
-    for (int i = 0; i < 5; i++) {
-        cout << d.get(i);
-    }
-    cout << endl; 
-
+    a.print(); 
     return 0;
 }

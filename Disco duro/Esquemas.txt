@@ -1,3 +1,0 @@
-Id#Survived#Pclass#Name#Sex#Age#SibSp#Parch#Ticket#Fare#Cabin#Embarked#15
-usuario#Id#string#Name#string#Sex#string#Age#string#
-Datos-extras#Survived#string#Pclass#string#SibSp#string#Parch#string#Ticket#string#Fare#string#Cabin#string#Embarked#string#15#int#
